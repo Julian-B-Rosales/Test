@@ -51,7 +51,7 @@
             </thead>
             <tbody>
                 <tr th:each="skill : ${user.skills}">
-                    <td ><a th:href="@{/experiences/(publicID=__${publicID}__)}" th:text="${skill}"  style="color: yellowgreen;"></a></td>
+                    <td ><a th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"  style="color: yellowgreen;"></a></td>
                 </tr>
             </tbody>
           </table>
