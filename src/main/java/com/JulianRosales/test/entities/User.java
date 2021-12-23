@@ -5,17 +5,24 @@
  */
 package com.JulianRosales.test.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import org.json.JSONObject;
 
-@Entity
+import java.util.ArrayList;
+
 public class User {
     private String name;
     private String country;
-    @Id
     private String publicID;
-    private JSONObject skills;
+    private ArrayList<String> skills;
+    private String profilePictureURL;
+
+    public String getProfilePictureURL() {
+        return profilePictureURL;
+    }
+
+    public void setProfilePictureURL(String profilePictureURL) {
+        this.profilePictureURL = profilePictureURL;
+    }
+    
 
     public String getName() {
         return name;
@@ -41,11 +48,11 @@ public class User {
         this.publicID = publicID;
     }
 
-    public JSONObject getSkills() {
+    public ArrayList<String> getSkills() {
         return skills;
     }
 
-    public void setSkills(JSONObject skills) {
+    public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
     }
 

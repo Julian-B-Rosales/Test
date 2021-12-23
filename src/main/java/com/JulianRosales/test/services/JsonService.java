@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class JsonService {
-//agregar que devuelva el jsonobject de cualquier usuario por su id publica
+    //Find and return a jsonobject by publicID
     public JSONObject getJSONObject(String publicID) {
         try {
 
@@ -65,5 +65,12 @@ public class JsonService {
         String skills = myJson.get("strengths").toString();
         
         return skills;
+    }
+    
+public String getPicture(JSONObject myJson) {
+        JSONObject person = new JSONObject(myJson.getJSONObject("person"));
+        String picture = person.get("picture").toString();
+        
+        return picture;
     }
 }

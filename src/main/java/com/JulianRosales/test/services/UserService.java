@@ -4,6 +4,7 @@ import com.JulianRosales.test.entities.User;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,25 +21,26 @@ public class UserService {
             User u1 = new User();
             JSONObject person = myJson.getJSONObject("person");
             JSONObject location = person.getJSONObject("location");
-            JSONObject strenghts = myJson.getJSONObject("strengths");
-
-            u1.setCountry(location.get("country").toString());
-            u1.setPublicID(person.get("publicId").toString());
-            u1.setName(person.get("name").toString());
-
-            JSONObject skills = strenghts.getJSONObject("name");
-            Iterator x = skills.keys();
-            List<String> skillsList= new ArrayList<String>() ;
-
-            while (x.hasNext()) {
-                String key = (String) x.next();
-                skillsList.add((String) skills.get(key));
+            
+            JSONArray strengths = (JSONArray) myJson.get("strengths");
+            ArrayList<String> skills = new ArrayList<>();
+            for (int i = 0; i < strengths.length(); i++) {
+                skills.add(strengths.getJSONObject(i).getString("name"));
             }
+            u1.setSkills(skills);
+
+            u1.setCountry(myJson.getJSONObject("person").getJSONObject("location").getString("country"));
+            u1.setPublicID(person.get("publicId").toString());
+            u1.setName(myJson.getJSONObject("person").get("name").toString());
+//            u1.setProfilePictureURL(jser.getPicture(myJson));
+            
+            
+           
             return u1;
-            } catch (Exception e) {
-                return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
-    
-    
+
 }
