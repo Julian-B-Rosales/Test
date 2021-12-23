@@ -32,12 +32,11 @@ public class PortalController {
         return "index.html";
     }
     
-    @GetMapping("/search/{publicID}")
-    public String search(@PathVariable String publicID, ModelMap model){
+    @GetMapping("/search")
+    public String search(String publicID, ModelMap model){
         try {
-            System.out.println(publicID);
             User user = userService.completeUserInfo(jser.getJSONObject(publicID));
-            System.out.println(user.toString());
+            
             model.put("user", user);
             
             return "user.html";

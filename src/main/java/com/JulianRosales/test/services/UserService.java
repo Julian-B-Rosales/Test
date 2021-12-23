@@ -33,7 +33,7 @@ public class UserService {
             u1.setPublicID(person.get("publicId").toString());
             u1.setName(myJson.getJSONObject("person").get("name").toString());
 //            u1.setProfilePictureURL(jser.getPicture(myJson));
-            
+            u1.setProfilePictureURL((String) myJson.getJSONObject("person").get("picture"));
             
            
             return u1;
