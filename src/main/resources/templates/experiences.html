@@ -31,27 +31,26 @@
                 <label th:text=${user.name} type="text" style="color: whitesmoke; margin-left: 10px;">
             </div>
         </div>
-        <div class="form-group row justify-content-center">
-            <label  style="color: whitesmoke;">Country:     </label>
-            <div>
-                <label th:text=${user.country} type="text" style="color: whitesmoke; margin-left: 10px;">
-            </div>
+
+        <div>
+            <h2 style="color: whitesmoke;">Experiences</h2>
         </div>
-        <div class="form-group row justify-content-center">
-            <label  style="color: whitesmoke;">Public ID: </label>
-            <div>
-                <label th:text=${user.publicID} type="text" style="color: whitesmoke; margin-left: 10px;">
-            </div>
-        </div>
-        <table class="mx-auto" style="color: whitesmoke; margin-left: auto; margin-right: auto;">
+        
+        <table class="mx-auto" style="color: whitesmoke; margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 35px;">
             <thead>
               <tr>
-                <th scope="col">Skill or Strength</th>
+                <th scope="col" style="color: yellowgreen;">Name</th>
+                <th scope="col" style="color: yellowgreen;">Category</th>
+                <th scope="col" style="color: yellowgreen;">From Year</th>
+                <th scope="col" style="color: yellowgreen;">To Year</th>
               </tr>
             </thead>
             <tbody>
-                <tr th:each="skill : ${user.skills}">
-                    <td ><a th:href="@{/experiences/(publicID=__${publicID}__)}" th:text="${skill}"  style="color: yellowgreen;"></a></td>
+                <tr th:if="${user.hasExp}" th:each="experience : ${user.expName}">
+                    <td th:text="${experience}" style="color: whitesmoke;"></td>
+                    <td th:text="${user.expCategory[experienceStat.index]}" style="color: whitesmoke;"></td>
+                    <td th:text="${user.expFromYear[experienceStat.index]}" style="color: whitesmoke;"></td>
+                    <td th:text="${user.expToYear[experienceStat.index]}" style="color: whitesmoke;"></td>
                 </tr>
             </tbody>
           </table>

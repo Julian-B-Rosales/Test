@@ -46,6 +46,21 @@ public class PortalController {
         }
     }
     
+    @GetMapping("/experiences")
+    public String experiences(String publicID, ModelMap model){
+        try {
+            
+            User user = userService.completeUserInfo(jser.getJSONObject(publicID));
+            
+            model.put("user", user);
+            
+            return "experiences.html";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error.html";
+        }
+    }
+    
 
 
 }
