@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png" style="background-size: cover; background-attachment: fixed;">
 
   <div id="overlayer"></div>
   <div id="load_container" class="load_container">
@@ -33,22 +33,21 @@
     </form>
   </nav>
 
-  <div class="card-body">
+  <div class="card-body" style="background-color: white; opacity: 95%; margin: 5%">
     <div>
-      <img th:src="${user.profilePictureURL}" class="rounded mx-auto d-block" alt="https://i.imgur.com/tdi3NGa.png"
-        width="100px" height="100px" style="margin-bottom: 20px;">
+      <img th:src="${user.profilePictureURL}"  alt="https://i.imgur.com/tdi3NGa.png"
+        width="100px" height="100px" style="margin-bottom: 20px; border-radius: 50%; margin-left: 50%; margin-right: 50%;">
     </div>
     <div class="form-group row justify-content-center">
-      <label style="color: whitesmoke;">Name:</label>
       <div>
-        <label th:text=${user.name} type="text" style="color: whitesmoke; margin-left: 10px;">
+        <h1 th:text=${user.name} type="text" style="color: rgb(123, 165, 40); margin-left: 10px;">
       </div>
     </div>
-
+ <div style="background-color: grey;">
     <div>
-      <h2 style="color: whitesmoke;">Experiences</h2>
+      <h2 style="color: whitesmoke; padding: 10px;">Experiences</h2>
     </div>
-
+   
     <table class="mx-auto"
       style="color: whitesmoke; margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 35px;">
       <thead>
@@ -68,6 +67,7 @@
         </tr>
       </tbody>
     </table>
+  </div>
 
   </div>
 
