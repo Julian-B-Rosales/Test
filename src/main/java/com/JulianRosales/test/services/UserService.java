@@ -2,6 +2,7 @@ package com.JulianRosales.test.services;
 
 import com.JulianRosales.test.entities.User;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
@@ -25,6 +26,7 @@ public class UserService {
             for (int i = 0; i < strengths.length(); i++) {
                 skills.add(strengths.getJSONObject(i).getString("name"));
             }
+            Collections.sort(skills);
             u1.setSkills(skills);
 
             u1.setCountry(myJson.getJSONObject("person").getJSONObject("location").getString("country"));
@@ -43,7 +45,6 @@ public class UserService {
                         JSONObject jObject = experiences.getJSONObject(i);
                         if(jObject.has("category")){
                             ArrayList category = u1.getExpCategory();
-                            System.out.println(category);
                             category.add(jObject.getString("category"));
                             u1.setExpCategory(category);
                         } 

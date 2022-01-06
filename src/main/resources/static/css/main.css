@@ -1,0 +1,66 @@
+.bg{
+    background: url("https://verismohr.com/wp-content/uploads/2018/11/strategy.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100vh;
+    background-attachment: fixed;
+    background-color: rgb(73, 71, 71);
+}
+
+.body-card{
+    background-color: aliceblue;
+    opacity: 95%;
+    margin: 5%;
+    height: 80%;
+    text-align: center;
+}
+.searcher{
+    display: inline-block;
+    text-align: center;
+}
+
+*, *:after,*:before{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#load_container{
+    background-color: rgba(250, 240, 245, 0.9);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: prop 1s ease;
+    -o-transition: prop 1s ease;
+    transition: prop 1s ease;
+    z-index: 10000;
+}
+
+#loading{
+    border: 15px solid rgb(48, 49, 51);
+    border-top-color: yellowgreen;
+    border-top-style: groove;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    -webkit-animation: moving 1.5s linear infinite;
+    -o-animation:  moving 1.5s linear infinite;
+    animation:  moving 1.5s linear infinite;
+}
+
+@keyframes moving{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
+
+
