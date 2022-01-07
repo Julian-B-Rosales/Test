@@ -63,9 +63,24 @@ public class UserService {
             u1.setCountry(myJson.getJSONObject("person").getJSONObject("location").getString("country"));
             u1.setPublicID(person.get("publicId").toString());
             u1.setName(myJson.getJSONObject("person").get("name").toString());
-            u1.setHeadLine(myJson.getJSONObject("person").get("professionalHeadline").toString());
-            u1.setBio(myJson.getJSONObject("person").get("summaryOfBio").toString());
-            u1.setProfilePictureURL((String) myJson.getJSONObject("person").get("picture"));
+            try {
+                u1.setHeadLine(myJson.getJSONObject("person").get("professionalHeadline").toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                u1.setHeadLine(null);
+            }
+            try {
+                u1.setBio(myJson.getJSONObject("person").get("summaryOfBio").toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                u1.setBio(null);
+            }
+            try {
+                u1.setProfilePictureURL((String) myJson.getJSONObject("person").get("picture"));
+            } catch (Exception e) {
+                e.printStackTrace();
+                u1.setProfilePictureURL(null);
+            }
             
             //New features
             if(myJson.getJSONArray("experiences").isNull(0)){

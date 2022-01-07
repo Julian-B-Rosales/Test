@@ -9,10 +9,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="js/script.js"></script>
 </head>
 
-<body class="bg">
-  <div id="overlayer"></div>
+<body>
   <div id="load_container" class="load_container">
     <div id="loading">  </div>
   </div>
@@ -33,12 +33,12 @@
       style="color: yellowgreen;">.co</h1>
   <br>
   <br>
-  <h3 style="color: yellowgreen;">Find by the </h3>
+  <h3 style="color: yellowgreen;">Search by the username and you can list the skills and experience of that person!</h3>
   <div class="searcher">
   <form th:action="@{/search/(publicID=__${publicID}__)}" method="get" class="form-inline">
-    <input th:value="${publicID}" class="form-control mr-sm-2" type="search" placeholder="(e.g. rjulianbenjamin)"
+    <input th:value="${publicID}" class="form-control form-control-lg" type="search" placeholder="(e.g. rjulianbenjamin)"
       aria-label="Search" name="publicID">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+    <button id="btn-one"class="btn btn-outline-success btn-lg" type="submit" >Search</button>
   </form>
 </div>
 </div>
@@ -51,7 +51,6 @@
     container.style.opacity = 0;
   }
 </script>
-
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>
