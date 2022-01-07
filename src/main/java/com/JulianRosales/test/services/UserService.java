@@ -22,16 +22,49 @@ public class UserService {
             User u1 = new User();
             JSONObject person = myJson.getJSONObject("person");
             JSONArray strengths = (JSONArray) myJson.get("strengths");
-            ArrayList<String> skills = new ArrayList<>();
+            ArrayList<String> interested = new ArrayList<>();
+            ArrayList<String> novice = new ArrayList<>();
+            ArrayList<String> proficient = new ArrayList<>();
+            ArrayList<String> expert = new ArrayList<>();
+            ArrayList<String> master = new ArrayList<>();
+            
             for (int i = 0; i < strengths.length(); i++) {
-                skills.add(strengths.getJSONObject(i).getString("name"));
+                
+                switch(strengths.getJSONObject(i).getString("proficiency")){
+                    case "no-experience-interested":
+                        interested.add(strengths.getJSONObject(i).getString("name"));
+                        break;
+                    case "novice":
+                        novice.add(strengths.getJSONObject(i).getString("name"));
+                        break;
+                    case "proficient":
+                        proficient.add(strengths.getJSONObject(i).getString("name"));
+                        break;
+                    case "expert":
+                        expert.add(strengths.getJSONObject(i).getString("name"));
+                        break;
+                    case "master":
+                        master.add(strengths.getJSONObject(i).getString("name"));
+                        break;
+                        
+                }
             }
-            Collections.sort(skills);
-            u1.setSkills(skills);
-
+            Collections.sort(interested);
+            u1.setInterested(interested);
+            Collections.sort(novice);
+            u1.setNovice(novice);
+            Collections.sort(proficient);
+            u1.setProficient(proficient);
+            Collections.sort(expert);
+            u1.setExpert(expert);
+            Collections.sort(master);
+            u1.setMaster(master);
+            
             u1.setCountry(myJson.getJSONObject("person").getJSONObject("location").getString("country"));
             u1.setPublicID(person.get("publicId").toString());
             u1.setName(myJson.getJSONObject("person").get("name").toString());
+            u1.setHeadLine(myJson.getJSONObject("person").get("professionalHeadline").toString());
+            u1.setBio(myJson.getJSONObject("person").get("summaryOfBio").toString());
             u1.setProfilePictureURL((String) myJson.getJSONObject("person").get("picture"));
             
             //New features
@@ -82,5 +115,7 @@ public class UserService {
             return null;
         }
     }
+    
+     
 
 }

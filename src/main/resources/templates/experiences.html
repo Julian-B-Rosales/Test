@@ -8,14 +8,15 @@
   <title>User info</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png" style="background-size: cover; background-attachment: fixed;">
+<body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png"
+  style="background-size: cover; background-attachment: fixed;">
 
   <div id="overlayer"></div>
   <div id="load_container" class="load_container">
-    <div id="loading">  </div>
+    <div id="loading"> </div>
   </div>
 
   <nav class="navbar navbar-dark bg-dark">
@@ -35,44 +36,48 @@
 
   <div class="card-body" style="background-color: white; opacity: 95%; margin: 5%">
     <div>
-      <img th:src="${user.profilePictureURL}"  alt="https://i.imgur.com/tdi3NGa.png"
-        width="100px" height="100px" style="margin-bottom: 20px; border-radius: 50%; margin-left: 50%; margin-right: 50%;">
+      <img th:src="${user.profilePictureURL}" alt="https://i.imgur.com/tdi3NGa.png" width="100px" height="100px"
+        style="margin-bottom: 20px; border-radius: 50%; margin-left: 50%; margin-right: 50%;">
     </div>
     <div class="form-group row justify-content-center">
       <div>
-        <h1 th:text=${user.name} type="text" style="color: rgb(123, 165, 40); margin-left: 10px;">
+        <h1 th:text=${user.name} type="text" style="color: rgb(123, 165, 40); margin-left: 10px;"><br>
+      </div>
+      <div style="text-align: center;">
+      <h3 th:text=${user.headLine} type="text" style="color: rgb(64, 92, 7);"></h3>
+        <p th:text=${user.bio} type="text"></p>
       </div>
     </div>
- <div style="background-color: grey;">
-    <div>
-      <h2 style="color: whitesmoke; padding: 10px;">Experiences</h2>
+    <div style="background-color: grey;">
+      <div>
+        <h2 style="color: whitesmoke; padding: 10px;">Experiences</h2>
+      </div>
+
+      <table class="mx-auto"
+        style="color: whitesmoke; margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 35px;">
+        <thead>
+          <tr>
+            <th scope="col" style="color: yellowgreen;">Name</th>
+            <th scope="col" style="color: yellowgreen;">Category</th>
+            <th scope="col" style="color: yellowgreen;">From Year</th>
+            <th scope="col" style="color: yellowgreen;">To Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${user.hasExp}" th:each="experience : ${user.expName}">
+            <td th:text="${experience}" style="color: whitesmoke;"></td>
+            <td th:text="${user.expCategory[experienceStat.index]}" style="color: whitesmoke;"></td>
+            <td th:text="${user.expFromYear[experienceStat.index]}" style="color: whitesmoke;"></td>
+            <td th:text="${user.expToYear[experienceStat.index]}" style="color: whitesmoke;"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-   
-    <table class="mx-auto"
-      style="color: whitesmoke; margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 35px;">
-      <thead>
-        <tr>
-          <th scope="col" style="color: yellowgreen;">Name</th>
-          <th scope="col" style="color: yellowgreen;">Category</th>
-          <th scope="col" style="color: yellowgreen;">From Year</th>
-          <th scope="col" style="color: yellowgreen;">To Year</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr th:if="${user.hasExp}" th:each="experience : ${user.expName}">
-          <td th:text="${experience}" style="color: whitesmoke;"></td>
-          <td th:text="${user.expCategory[experienceStat.index]}" style="color: whitesmoke;"></td>
-          <td th:text="${user.expFromYear[experienceStat.index]}" style="color: whitesmoke;"></td>
-          <td th:text="${user.expToYear[experienceStat.index]}" style="color: whitesmoke;"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
   </div>
 
   <script>
-    window.onload = function(){
+    window.onload = function () {
       var container = document.getElementById('load_container');
       container.style.visibility = 'hidden';
       container.style.opacity = 0;

@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="../static/css/main.css">
 </head>
 
-<body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png" style="background-size: cover; background-attachment: fixed;">
+<body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png"
+    style="background-size: cover; background-attachment: fixed;">
     <div id="overlayer"></div>
     <div id="load_container" class="load_container">
         <div id="loading"> </div>
@@ -32,7 +33,7 @@
     </nav>
 
     <div class="card" style="width: 18rem; float: left; position: fixed;">
-        <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png" >
+        <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png">
         <div class="card-body">
             <h5 class="card-title" th:text=${user.name}></h5>
             <div class="form-group row justify-content-left">
@@ -47,17 +48,57 @@
                     <label th:text=${user.publicID} type="text" style="margin-left: 10px;">
                 </div>
             </div>
-            <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary" style="float: right;">Experiences</a>
+            <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary stretched-link"
+                style="float: right;">Experiences</a>
         </div>
     </div>
 
     <div class="card" style="margin-left: 40%; margin-right: auto; min-width: 20%; max-width:40%;">
-        <h1 style="margin-left: 5%; font-family: Arial, Helvetica, sans-serif; color: grey;"><strong>SKILLS</strong></h1>
-        <ul th:each="skill : ${user.skills}" class="grid-list" style="padding: 10px; text-align: center;;" >
-            <li class="list-group-item" style="margin: auto; display: inline;"><a
-                    th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
-                    style="color: yellowgreen;"></a></li>
-        </ul>
+        <h1 style="margin-left: 5%; font-family: Arial, Helvetica, sans-serif; color: grey; text-align: center;">
+            <strong>SKILLS</strong></h1>
+        <div th:if="${!user.interested.isEmpty()}">
+            <h4>No experience but interested</h3>
+                <ul th:each="skill : ${user.interested}" class="grid-list" style="padding: 10px; text-align: center;;">
+                    <li class="list-group-item" style="margin: auto; display: inline;"><a
+                            th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                            style="color: yellowgreen;"></a></li>
+                </ul>
+        </div>
+        <div th:if="${!user.master.isEmpty()}">
+            <h3>Master</h3>
+            <ul th:each="skill : ${user.master}" class="grid-list" style="padding: 10px; text-align: center;;">
+                <li class="list-group-item" style="margin: auto; display: inline;"><a
+                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                        style="color: yellowgreen;"></a></li>
+            </ul>
+        </div>
+        <div th:if="${!user.expert.isEmpty()}">
+            <h3>Expert</h3>
+            <ul th:each="skill : ${user.expert}" class="grid-list" style="padding: 10px; text-align: center;;">
+                <li class="list-group-item" style="margin: auto; display: inline;"><a
+                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                        style="color: yellowgreen;"></a></li>
+            </ul>
+        </div>
+        <div th:if="${!user.proficient.isEmpty()}">
+            <h3>Proficient</h3>
+            <ul th:each="skill : ${user.proficient}" class="grid-list" style="padding: 10px; text-align: center;;">
+                <li class="list-group-item" style="margin: auto; display: inline;"><a
+                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                        style="color: yellowgreen;"></a></li>
+            </ul>
+        </div>
+        <div th:if="${!user.novice.isEmpty()}">
+            <h3>Novice</h3>
+            <ul th:each="skill : ${user.novice}" class="grid-list" style="padding: 10px; text-align: center;;">
+                <li class="list-group-item" style="margin: auto; display: inline;"><a
+                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                        style="color: yellowgreen;"></a></li>
+            </ul>
+        </div>
+
+
+
     </div>
 
     </div>

@@ -13,7 +13,14 @@ public class User {
     private String name;
     private String country;
     private String publicID;
-    private ArrayList<String> skills;
+    private String bio;
+    private String headLine;
+    //skills
+    private ArrayList<String> master;
+    private ArrayList<String> expert;
+    private ArrayList<String> interested;
+    private ArrayList<String> novice;
+    private ArrayList<String> proficient;
     private String profilePictureURL;
     //Experiences:
     private boolean hasExp;
@@ -21,8 +28,27 @@ public class User {
     private ArrayList<String> expName = new ArrayList<>();
     private ArrayList<String> expFromYear = new ArrayList<>();
     private ArrayList<String> expToYear = new ArrayList<>();
+
     
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getHeadLine() {
+        return headLine;
+    }
+
+    public void setHeadLine(String headLine) {
+        this.headLine = headLine;
+    }
+    
+
+    
     public String getProfilePictureURL() {
         return profilePictureURL;
     }
@@ -56,13 +82,47 @@ public class User {
         this.publicID = publicID;
     }
 
-    public ArrayList<String> getSkills() {
-        return skills;
+    public ArrayList<String> getMaster() {
+        return master;
     }
 
-    public void setSkills(ArrayList<String> skills) {
-        this.skills = skills;
+    public void setMaster(ArrayList<String> master) {
+        this.master = master;
     }
+
+    public ArrayList<String> getExpert() {
+        return expert;
+    }
+
+    public void setExpert(ArrayList<String> expert) {
+        this.expert = expert;
+    }
+
+    public ArrayList<String> getInterested() {
+        return interested;
+    }
+
+    public void setInterested(ArrayList<String> interested) {
+        this.interested = interested;
+    }
+
+    public ArrayList<String> getNovice() {
+        return novice;
+    }
+
+    public void setNovice(ArrayList<String> novice) {
+        this.novice = novice;
+    }
+
+    public ArrayList<String> getProficient() {
+        return proficient;
+    }
+
+    public void setProficient(ArrayList<String> proficient) {
+        this.proficient = proficient;
+    }
+
+    
 
     public ArrayList<String> getExpCategory() {
         return expCategory;
@@ -108,7 +168,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "name=" + name + ", \ncountry=" + country + ", \npublicID=" + publicID + ", \nskills=" + skills + ", \nprofilePictureURL=" + profilePictureURL + ", \nexpCategory=" + expCategory + ", \nexpName=" + expName + ", \nexpFromYear=" + expFromYear + ", \nexpToYear=" + expToYear + '}';
+        return "User{" + "name=" + name + ", \ncountry=" + country + ", \npublicID=" + publicID  + ", \nprofilePictureURL=" + profilePictureURL + ", \nexpCategory=" + expCategory + ", \nexpName=" + expName + ", \nexpFromYear=" + expFromYear + ", \nexpToYear=" + expToYear + '}';
     }
 
     
