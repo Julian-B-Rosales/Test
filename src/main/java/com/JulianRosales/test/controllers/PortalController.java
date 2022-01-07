@@ -46,6 +46,8 @@ public class PortalController {
         }
     }
     
+    
+    
     @GetMapping("/experiences")
     public String experiences(String publicID, ModelMap model){
         try {
@@ -58,6 +60,24 @@ public class PortalController {
         } catch (Exception e) {
             e.printStackTrace();
             return "error.html";
+        }
+    }
+    
+    @GetMapping("/skill-wiki/{skill}")
+    public String skillWiki(@PathVariable String skill, ModelMap model){
+        try {
+            skill = skill.replace(' ', '-');
+            String info = jser.getWiki(skill);
+            if(info.isEmpty() || info.equals(null)){
+                info = "Error searching in Wikipedia, we`re sorry for the inconvinience";
+            }
+            model.put("skill", skill);
+            model.put("info", info);
+            
+            return "skill-wiki.html";
+        } catch (Exception e) {
+            System.out.println(e);
+            return "error-wiki.html";
         }
     }
     

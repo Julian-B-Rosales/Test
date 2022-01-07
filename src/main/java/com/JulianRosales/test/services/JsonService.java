@@ -75,5 +75,44 @@ public String getPicture(JSONObject myJson) {
     }
 
 
+public String getWiki(String skill) {
+        try {
+
+            URL url = new URL("https://en.wikipedia.org/api/rest_v1/page/summary/" + skill);
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+
+            //Getting the response code
+            int responsecode = conn.getResponseCode();
+
+            if (responsecode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responsecode);
+            } else {
+
+                String inline = "";
+                Scanner scanner = new Scanner(url.openStream());
+
+                //Write all the JSON data into a string using a scanner
+                while (scanner.hasNext()) {
+                    inline += scanner.nextLine();
+                }
+
+                //Close the scanner
+                scanner.close();
+
+                //
+                JSONObject myJson = new JSONObject(inline);
+                String info = myJson.getString("extract");
+                return info;
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
 }

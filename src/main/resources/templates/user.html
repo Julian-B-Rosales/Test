@@ -10,14 +10,14 @@
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    
-  <script type="text/javascript" src="js/script.js"></script>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/script.js"></script>
 </head>
 
 <body background="https://verismohr.com/wp-content/uploads/2018/11/strategy.png"
     style="background-size: cover; background-attachment: fixed;">
-    <div id="load_container" >
+    <div id="load_container">
         <div id="loading"> </div>
     </div>
 
@@ -35,97 +35,99 @@
         </form>
     </nav>
 
-<div class="d-block d-md-none">
-    <div class="card" style="width: 18rem; margin-left: 40%; margin-left: auto;">
-        <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png">
-        <div class="card-body">
-            <h5 class="card-title" th:text=${user.name}></h5>
-            <div class="form-group row justify-content-left">
-                <label>Country: </label>
-                <div>
-                    <label th:text=${user.country} type="text" style="margin-left: 10px;">
+    <div class="d-block d-md-none">
+        <div class="card" style="width: 18rem; margin-left: 40%; margin-left: auto;">
+            <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png">
+            <div class="card-body">
+                <h5 class="card-title" th:text=${user.name}></h5>
+                <div class="form-group row justify-content-left">
+                    <label>Country: </label>
+                    <div>
+                        <label th:text=${user.country} type="text" style="margin-left: 10px;">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row justify-content-left">
-                <label>Public ID: </label>
-                <div>
-                    <label th:text=${user.publicID} type="text" style="margin-left: 10px;">
+                <div class="form-group row justify-content-left">
+                    <label>Public ID: </label>
+                    <div>
+                        <label th:text=${user.publicID} type="text" style="margin-left: 10px;">
+                    </div>
                 </div>
+                <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary stretched-link"
+                    style="float: right;">Experiences</a>
             </div>
-            <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary stretched-link"
-                style="float: right;">Experiences</a>
+        </div>
+        <br><br>
+    </div>
+    <div class="d-none d-md-block">
+        <div class="card" style="width: 18rem; float: float-md-left; position: fixed; ">
+            <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png">
+            <div class="card-body">
+                <h5 class="card-title" th:text=${user.name}></h5>
+                <div class="form-group row justify-content-left">
+                    <label>Country: </label>
+                    <div>
+                        <label th:text=${user.country} type="text" style="margin-left: 10px;">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-left">
+                    <label>Public ID: </label>
+                    <div>
+                        <label th:text=${user.publicID} type="text" style="margin-left: 10px;">
+                    </div>
+                </div>
+                <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary stretched-link"
+                    style="float: right;">Experiences</a>
+            </div>
         </div>
     </div>
-    <br><br>
-</div>
-<div class="d-none d-md-block">
-    <div class="card" style="width: 18rem; float: float-md-left; position: fixed; ">
-        <img th:src="${user.profilePictureURL}" class="card-img-top" alt="https://i.imgur.com/tdi3NGa.png">
-        <div class="card-body">
-            <h5 class="card-title" th:text=${user.name}></h5>
-            <div class="form-group row justify-content-left">
-                <label>Country: </label>
-                <div>
-                    <label th:text=${user.country} type="text" style="margin-left: 10px;">
-                </div>
-            </div>
-            <div class="form-group row justify-content-left">
-                <label>Public ID: </label>
-                <div>
-                    <label th:text=${user.publicID} type="text" style="margin-left: 10px;">
-                </div>
-            </div>
-            <a th:href="@{/experiences/(publicID=__${user.publicID}__)}" class="btn btn-primary stretched-link"
-                style="float: right;">Experiences</a>
-        </div>
-    </div>
-</div>
-<div style="overflow-x: auto;">
-    <div class="card" style="margin-left: 40%; margin-right: auto; min-width: 20%; max-width:40%; display: inline-block; overflow-x: auto;">
-        <h1 style="font-family: Arial, Helvetica, sans-serif; color: rgb(88, 122, 18); text-align: center;">
-            <strong>SKILLS</strong></h1>
+    <div style="overflow-x: auto;">
+        <div class="card"
+            style="margin-left: 40%; margin-right: auto; min-width: 20%; max-width:40%; display: inline-block; overflow-x: auto;">
+            <h1 style="font-family: Arial, Helvetica, sans-serif; color: rgb(88, 122, 18); text-align: center;">
+                <strong>SKILLS</strong></h1>
 
-        <div th:if="${!user.master.isEmpty()}">
-            <h3 style="text-align: center;">Master</h3>
-            <ul th:each="skill : ${user.master}" class="grid-list" style="padding: 5px; text-align: center;">
-                <li class="list-group-item" style="margin: auto; display: inline-block;"><a
-                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
-                        style="color: yellowgreen;"></a></li>
-            </ul>
-        </div>
-        <div th:if="${!user.expert.isEmpty()}">
-            <h3 style="text-align: center;">Expert</h3>
-            <ul th:each="skill : ${user.expert}" class="grid-list" style="padding: 5px; text-align: center;">
-                <li class="list-group-item" style="margin: auto; display: inline-block;"><a
-                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
-                        style="color: yellowgreen;"></a></li>
-            </ul>
-        </div>
-        <div th:if="${!user.proficient.isEmpty()}">
-            <h3 style="text-align: center;">Proficient</h3>
-            <ul th:each="skill : ${user.proficient}" class="grid-list" style="padding: 5px; text-align: center;">
-                <li class="list-group-item" style="margin: auto; display: inline-block;"><a
-                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
-                        style="color: yellowgreen;"></a></li>
-            </ul>
-        </div>
-        <div th:if="${!user.novice.isEmpty()}">
-            <h3 style="text-align: center;">Novice</h3>
-            <ul th:each="skill : ${user.novice}" class="grid-list" style="padding: 5px; text-align: center;">
-                <li class="list-group-item" style="margin: auto; display: inline-block;"><a
-                        th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
-                        style="color: yellowgreen;"></a></li>
-            </ul>
-        </div>
-        <div th:if="${!user.interested.isEmpty()}">
-            <h4 style="text-align: center; margin-left: 10px; margin-right: 5px;">No experience but interested</h3>
-                <ul th:each="skill : ${user.interested}" class="grid-list" style="padding: 10px; text-align: center;">
+            <div th:if="${!user.master.isEmpty()}">
+                <h3 style="text-align: center;">Master</h3>
+                <ul th:each="skill : ${user.master}" class="grid-list" style="padding: 5px; text-align: center;">
                     <li class="list-group-item" style="margin: auto; display: inline-block;"><a
-                            th:href="@{/experiences/(publicID=__${user.publicID}__)}" th:text="${skill}"
+                            th:href="@{/skill-wiki/__${skill}__}" th:text="${skill}"
                             style="color: yellowgreen;"></a></li>
                 </ul>
+            </div>
+            <div th:if="${!user.expert.isEmpty()}">
+                <h3 style="text-align: center;">Expert</h3>
+                <ul th:each="skill : ${user.expert}" class="grid-list" style="padding: 5px; text-align: center;">
+                    <li class="list-group-item" style="margin: auto; display: inline-block;"><a
+                            th:href="@{/skill-wiki/__${skill}__}" th:text="${skill}"
+                            style="color: yellowgreen;"></a></li>
+                </ul>
+            </div>
+            <div th:if="${!user.proficient.isEmpty()}">
+                <h3 style="text-align: center;">Proficient</h3>
+                <ul th:each="skill : ${user.proficient}" class="grid-list" style="padding: 5px; text-align: center;">
+                    <li class="list-group-item" style="margin: auto; display: inline-block;"><a
+                        th:href="@{/skill-wiki/__${skill}__}" th:text="${skill}"
+                        style="color: yellowgreen;"></a></li>
+                </ul>
+            </div>
+            <div th:if="${!user.novice.isEmpty()}">
+                <h3 style="text-align: center;">Novice</h3>
+                <ul th:each="skill : ${user.novice}" class="grid-list" style="padding: 5px; text-align: center;">
+                    <li class="list-group-item" style="margin: auto; display: inline-block;"><a
+                            th:href="@{/skill-wiki/__${skill}__}" th:text="${skill}"
+                            style="color: yellowgreen;"></a></li>
+                </ul>
+            </div>
+            <div th:if="${!user.interested.isEmpty()}">
+                <h4 style="text-align: center; margin-left: 10px; margin-right: 5px;">No experience but interested</h3>
+                    <ul th:each="skill : ${user.interested}" class="grid-list"
+                        style="padding: 10px; text-align: center;">
+                        <li class="list-group-item" style="margin: auto; display: inline-block;"><a
+                                th:href="@{/skill-wiki/__${skill}__}" th:text="${skill}"
+                                style="color: yellowgreen;"></a></li>
+                    </ul>
+            </div>
         </div>
-    </div>
 
 
     </div>
